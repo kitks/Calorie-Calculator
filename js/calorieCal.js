@@ -22,12 +22,14 @@ function calorieBMRCal() {
 
     let resultBMRTemp = (weightInputEl.value * 10) + (heightInputEl.value * 6.25) - (ageInputEl.value * 5)
 
-  
+    if(ageInputEl.value === 0 && weightInputEl.value === 0 && heightInputEl.value===0){
+        return alert("Please fill in every information")
+    }
 
     if (genderInputMaleEl.checked === true) {
         let resultBMR = resultBMRTemp + 5
         if (actSelectorEl.value === "actBasicInputEl") {
-            return calorieResultEl.value = resultBMR
+            return displayBMR(resultBMR)
         }
         else if (actSelectorEl.value === "actLowInputEl") {
             console.log("test low act")
@@ -46,7 +48,7 @@ function calorieBMRCal() {
     if (genderInputFemaleEl.checked === true) {
         let resultBMR = resultBMRTemp - 161
         if (actSelectorEl.value === "actBasicInputEl") {
-            return calorieResultEl.value = resultBMR
+            return displayBMR(resultBMR)
         }
         else if (actSelectorEl.value === "actLowInputEl") {
             console.log("test low act")
@@ -72,22 +74,55 @@ function calorieBMRCal() {
 function calorieActLow(resultBMR) {
     // console.log(`test calorie act cal funciton ${resultBMR}`)
     let resultActLow = resultBMR * 1.375
-    return calorieResultEl.value = resultActLow
+    return displayWeightTarget(resultActLow)
 }
 
 // Forumla for med activity
 function calorieActMed(resultBMR) {
     // console.log(`test calorie act cal funciton ${resultBMR}`)
-    let resultActLow = resultBMR * 1.55
-    return calorieResultEl.value = resultActLow
+    let resultActMed = resultBMR * 1.55
+    return displayWeightTarget(resultActMed)
 }
 
 // Forumla for high activity
 function calorieActHigh(resultBMR) {
     // console.log(`test calorie act cal funciton ${resultBMR}`)
-    let resultActLow = resultBMR * 1.725
-    return calorieResultEl.value = resultActLow
+    let resultActHigh = resultBMR * 1.725
+    return displayWeightTarget(resultActHigh)
 }
+
+// let displayCalorie = document.getElementById("displayCalorieEl")
+let displayCalorie = document.getElementById("displayCalorieEl")
+
+function displayBMR(resultBMR){
+    return displayCalorie.innerHTML = (`<br>Basic Metabolic Rate (BMR): <b>${resultBMR}</b> Calories/day`)
+}
+
+function displayWeightTarget(resultBMR){
+    
+    let displaymain = Math.floor(resultBMR)
+    let displayLowLoss = Math.floor(resultBMR * 0.87)
+    let displayMedLoss = Math.floor(resultBMR * 0.73)
+    let displayHighLoss = Math.floor(resultBMR * 0.46)
+
+    return displayCalorie.innerHTML = (`
+    <br>
+    Daily Calories Needed:
+    <br>
+    Target for maintain weight: <b>${displaymain}</b> Calories/day
+    <br>
+    Target for mild loss weight: <b>${displayLowLoss}</b> Calories/day
+    <br>
+    Target for mild loss weight: <b>${displayMedLoss}</b> Calories/day
+    <br>
+    Target for mild loss weight: <b>${displayHighLoss}</b> Calories/day
+    `)
+    
+}
+
+// document.body.innerHTML = (`
+// Target for loss weight ${resultBMR}
+// `)
 
 // Maintain weight
 // 1,779 100%    137.5 %

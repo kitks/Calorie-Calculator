@@ -5,12 +5,12 @@
     <style rel="stylesheet" ref=""></style>
 </head>
 <body>
-Age: <input id="ageInputEl" type="text" value="25"><br>
+Age: <input id="ageInputEl" type="text" value=""><br>
 Gender: <input id="genderInputMaleEl" type="radio" name="gender" value="Male" checked>Male
 <input id="genderInputFemaleEl" type="radio" name="gender" value="Male">Female
 <br>
-Height: <input id="heightInputEl" type="text" placeholder="Centimeters" value="160"><br>
-Weight: <input id="weightInputEl" type="text" placeholder="Kilograms" value="58"><br>
+Height: <input id="heightInputEl" type="text" placeholder="Centimeters" value=""><br>
+Weight: <input id="weightInputEl" type="text" placeholder="Kilograms" value=""><br>
 Activity:
 <select id="actSelectorEl">
     <option value="actBasicInputEl">Basic Metabolic Rate (BMR)</option>
@@ -19,7 +19,8 @@ Activity:
     <option value="actHighInputEl">High Exercise (6-7 days per week)</option>
 </select><br>
 <input id="calorieCalBtnEl" type="button" value="Calculate"><br>
-Daily Calories Needed: <input id="calorieResultEl" type="text" disabled>
+<!-- Daily Calories Needed: <input id="calorieResultEl" type="text" disabled> -->
+<div id="displayCalorieEl"></div>
 
 
 </body>
