@@ -22,28 +22,71 @@ function calorieBMRCal() {
 
     let resultBMRTemp = (weightInputEl.value * 10) + (heightInputEl.value * 6.25) - (ageInputEl.value * 5)
 
-    if (genderInputMaleEl.checked === true && actSelectorEl.value==="actBasicInputEl") {
+  
+
+    if (genderInputMaleEl.checked === true) {
         let resultBMR = resultBMRTemp + 5
-        // basicFormula = calorieResultEl.value
-       return  calorieResultEl.value = resultBMR
-    }else{
-        let resultBMR = resultBMRTemp + 5
-         calorieActCal(resultBMR)
+        if (actSelectorEl.value === "actBasicInputEl") {
+            return calorieResultEl.value = resultBMR
+        }
+        else if (actSelectorEl.value === "actLowInputEl") {
+            console.log("test low act")
+            return calorieActLow(resultBMR)
+        }
+        else if (actSelectorEl.value === "actMedInputEl") {
+            console.log("test med act")
+            return calorieActMed(resultBMR)
+        }
+        else if (actSelectorEl.value === "actHighInputEl") {
+            console.log("test high act")
+            return calorieActHigh(resultBMR)
+        }
     }
 
     if (genderInputFemaleEl.checked === true) {
         let resultBMR = resultBMRTemp - 161
-        // basicFormula = calorieResultEl.value
-       return  calorieResultEl.value = resultBMR
-    }else{
-         calorieActCal()
+        if (actSelectorEl.value === "actBasicInputEl") {
+            return calorieResultEl.value = resultBMR
+        }
+        else if (actSelectorEl.value === "actLowInputEl") {
+            console.log("test low act")
+            return calorieActLow(resultBMR)
+        }
+        else if (actSelectorEl.value === "actMedInputEl") {
+            console.log("test med act")
+            return calorieActMed(resultBMR)
+        }
+        else if (actSelectorEl.value === "actHighInputEl") {
+            console.log("test high act")
+            return calorieActHigh(resultBMR)
+        }
     }
 
-  
 }
 
-function calorieActCal(resultBMR){
-    console.log(`test calorie act cal funciton ${resultBMR}`)
+// 1.375=轻度活跃（少量锻炼或运动，每周1-3天）
+// 1.55=中等活跃（适量锻炼或运动，每周3-5天）
+// 1.725=很活跃（大量锻炼或运动，每周6-7天）
+
+// Forumla for low activity
+function calorieActLow(resultBMR) {
+    // console.log(`test calorie act cal funciton ${resultBMR}`)
+    let resultActLow = resultBMR * 1.375
+    return calorieResultEl.value = resultActLow
+}
+
+// Forumla for med activity
+function calorieActMed(resultBMR) {
+    // console.log(`test calorie act cal funciton ${resultBMR}`)
+    let resultActLow = resultBMR * 1.55
+    return calorieResultEl.value = resultActLow
+}
+
+// Forumla for high activity
+function calorieActHigh(resultBMR) {
+    // console.log(`test calorie act cal funciton ${resultBMR}`)
+    let resultActLow = resultBMR * 1.725
+    return calorieResultEl.value = resultActLow
 }
 
 // Maintain weight
