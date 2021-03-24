@@ -1,3 +1,4 @@
+//===================== Set up variables
 let ageInputEl = document.getElementById("ageInputEl")
 
 let genderInputMaleEl = document.getElementById("genderInputMaleEl")
@@ -17,24 +18,88 @@ let actSelectorEl = document.getElementById("actSelectorEl")
 let calorieCalBtnEl = document.getElementById("calorieCalBtnEl")
 let calorieResultEl = document.getElementById("calorieResultEl")
 
+let displayCalorie = document.getElementById("displayCalorieEl")
 
-// function testBtn() {
-//     console.log(`test Btn`)
-// }
+//===================== Metric unit switcher
+function unitMetricSwitch() {
+    console.log(`test unit switch button`)
+    metricBtnEl.focus()
+    // usBtnEl.style.backgroundColor = "transparent"
 
-function calorieBMRCal() {
-    // Mifflin-St Jeor Equation
-    // Male = (10 × W) ＋ (6.25 × H) - (5 × A) ＋ 5
-    // Feamle = (10 × W) ＋ (6.25 × H) - (5 × A) - 161
+    heightInputUsEl.style.display = "none"
+    height2InputUsEl.style.display = "none"
+    weightInputUsEl.style.display = "none"
+    heightInputEl.style.display = "inline-block"
+    weightInputEl.style.display = "inline-block"
 
-    let resultBMRTemp = (weightInputEl.value * 10) + (heightInputEl.value * 6.25) - (ageInputEl.value * 5)
+    // if (ageInputEl.value || weightInputEl.value || heightInputEl.value === "" ) {
+    //     return alert("Please fill the information")
+    // }
+}
 
-    if (ageInputEl.value === "" && weightInputEl.value === "" && heightInputEl.value === "") {
-        return alert("Please fill the information")
+//===================== US unit switcher
+function unitUsSwitch() {
+    console.log(`test unit switch button`)
+    usBtnEl.focus()
+    // metricBtnEl.style.backgroundColor = "transparent"
+
+    heightInputUsEl.style.display = "inline-block"
+    height2InputUsEl.style.display = "inline-block"
+    weightInputUsEl.style.display = "inline-block"
+    heightInputEl.style.display = "none"
+    weightInputEl.style.display = "none"
+
+    // if (ageInputEl.value || weightInputUsEl.value || heightInputUsEl.value || height2InputUsEl.value === "" ) {
+    //     return alert("Please fill the information")
+    // }
+}
+
+
+//===================== Calculate the calories by equation in two options Metric or US Unit
+function calorieFormula() {
+
+    let resultTemp
+
+
+
+    if (heightInputUsEl.style.display === "none" && ageInputEl.value && weightInputEl.value && heightInputEl.value !== "") {
+        console.log(`metric true`)
+
+        resultTemp = (weightInputEl.value * 10) + (heightInputEl.value * 6.25) - (ageInputEl.value * 5)
+
+        return calorieCal(resultTemp)
+
+    } else if (heightInputEl.style.display === "none" &&
+        ageInputEl.value && weightInputUsEl.value && heightInputUsEl.value && height2InputUsEl.value !== "") {
+        console.log(`us true`)
+
+        resultTemp = ((weightInputUsEl.value / 2.2) * 10) +
+            ((heightInputUsEl.value * 30.48 + height2InputUsEl.value * 2.54) * 6.25) - (ageInputEl.value * 5)
+
+        return calorieCal(resultTemp)
+
+    } else {
+        // return if any blank input
+        return alert(`Please fill the information`)
+
+    }
+
+    
+
+ 
+}
+
+//===================== Define the gender then calculate the Basic calories
+//===================== and pass to / Low active / Medium active / High active function
+function calorieCal(resultTemp) {
+
+
+    if(isNaN(resultTemp)){
+        return alert (`Vaild Input. Please input number.`)
     }
 
     if (genderInputMaleEl.checked === true) {
-        let resultBMR = resultBMRTemp + 5
+        let resultBMR = resultTemp + 5
         if (actSelectorEl.value === "actBasicInputEl") {
             return displayBMR(resultBMR)
         }
@@ -53,7 +118,7 @@ function calorieBMRCal() {
     }
 
     if (genderInputFemaleEl.checked === true) {
-        let resultBMR = resultBMRTemp - 161
+        let resultBMR = resultTemp - 161
         if (actSelectorEl.value === "actBasicInputEl") {
             return displayBMR(resultBMR)
         }
@@ -73,38 +138,35 @@ function calorieBMRCal() {
 
 }
 
-// 1.375=轻度活跃（少量锻炼或运动，每周1-3天）
-// 1.55=中等活跃（适量锻炼或运动，每周3-5天）
-// 1.725=很活跃（大量锻炼或运动，每周6-7天）
 
-// Forumla for low activity
+//===================== Forumla for low activity
 function calorieActLow(resultBMR) {
     // console.log(`test calorie act cal funciton ${resultBMR}`)
     let resultActLow = resultBMR * 1.375
     return displayWeightTarget(resultActLow)
 }
 
-// Forumla for med activity
+//===================== Forumla for med activity
 function calorieActMed(resultBMR) {
     // console.log(`test calorie act cal funciton ${resultBMR}`)
     let resultActMed = resultBMR * 1.55
     return displayWeightTarget(resultActMed)
 }
 
-// Forumla for high activity
+//===================== Forumla for high activity
 function calorieActHigh(resultBMR) {
     // console.log(`test calorie act cal funciton ${resultBMR}`)
     let resultActHigh = resultBMR * 1.725
     return displayWeightTarget(resultActHigh)
 }
 
-// let displayCalorie = document.getElementById("displayCalorieEl")
-let displayCalorie = document.getElementById("displayCalorieEl")
 
+//===================== Display the basic calorie result
 function displayBMR(resultBMR) {
     return displayCalorie.innerHTML = (`<br>Basic Metabolic Rate (BMR): <b>${resultBMR}</b> Calories/day`)
 }
 
+//===================== Display the 4 weight target results 
 function displayWeightTarget(resultBMR) {
 
     let displaymain = Math.floor(resultBMR)
@@ -133,40 +195,16 @@ function displayWeightTarget(resultBMR) {
 
 }
 
-function unitUsSwitch() {
-    console.log(`test unit switch button`)
-    heightInputUsEl.style.display = "inline-block"
-    height2InputUsEl.style.display = "inline-block"
-    weightInputUsEl.style.display = "inline-block"
-    heightInputEl.style.display = "none"
-    weightInputEl.style.display = "none"
-}
-
-function unitMetricSwitch() {
-    console.log(`test unit switch button`)
-    heightInputUsEl.style.display = "none"
-    height2InputUsEl.style.display = "none"
-    weightInputUsEl.style.display = "none"
-    heightInputEl.style.display = "inline-block"
-    weightInputEl.style.display = "inline-block"
-}
-
-function calorieFormula() {
-    if (heightInputEl.style.display === "none") {
-        return console.log(`us true`)
-
-    } else if (heightInputUsEl.style.display === "none") {
-        return console.log(`metric true`)
-    }
-}
-
-
+//===================== Calculate Btn 
 calorieCalBtnEl.addEventListener("click", calorieFormula)
-usBtnEl.addEventListener("click", unitUsSwitch)
+
+//===================== Default Metric switch
+window.addEventListener("load", unitMetricSwitch)
+
+//===================== Metric and US switch
 metricBtnEl.addEventListener("click", unitMetricSwitch)
-// document.body.innerHTML = (`
-// Target for loss weight ${resultBMR}
-// `)
+usBtnEl.addEventListener("click", unitUsSwitch)
+
 
 
 

@@ -1,8 +1,49 @@
-#heightInputUsEl {
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.calorieCal-wrap {
+  background-color: #1d8a92;
+  width: 400px;
+  height: 500px;
+  margin: 20px auto 0;
+  padding: 20px;
+  font-family: "Comfortaa", cursive;
+  color: black;
+  border-radius: 30px;
+}
+
+.calorieCal-wrap input {
+  margin: 5px 0;
+}
+
+.calorieCal-wrap #metricBtnEl:focus {
+  background-color: grey;
+}
+
+.calorieCal-wrap #usBtnEl:focus {
+  background-color: grey;
+}
+
+.calorieCal-wrap #heightInputUsEl {
   display: none;
 }
 
-#weightInputUsEl {
+.calorieCal-wrap #height2InputUsEl {
   display: none;
+}
+
+.calorieCal-wrap #weightInputUsEl {
+  display: none;
+}
+
+.calorieCal-wrap #displayCalorieEl {
+  color: white;
 }
 /*# sourceMappingURL=calorieCal.css.map */
