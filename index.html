@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Calories</title>
-    <style rel="stylesheet" ref=""></style>
+    <link rel="stylesheet" href="./css/calorieCal.css"></link>
 </head>
-<body>
-Age: <input id="ageInputEl" type="text" value=""><br>
-Gender: <input id="genderInputMaleEl" type="radio" name="gender" value="Male" checked>Male
-<input id="genderInputFemaleEl" type="radio" name="gender" value="Male">Female
-<br>
-Height: <input id="heightInputEl" type="text" placeholder="Centimeters" value=""><br>
-Weight: <input id="weightInputEl" type="text" placeholder="Kilograms" value=""><br>
-Activity:
-<select id="actSelectorEl">
-    <option value="actBasicInputEl">Basic Metabolic Rate (BMR)</option>
-    <option value="actLowInputEl">Low Exercise (1-3 days per week)</option>
-    <option value="actMedInputEl">Medium Exercise (4-5 days per week)</option>
-    <option value="actHighInputEl">High Exercise (6-7 days per week)</option>
-</select><br>
-<input id="calorieCalBtnEl" type="button" value="Calculate"><br>
-<!-- Daily Calories Needed: <input id="calorieResultEl" type="text" disabled> -->
-<div id="displayCalorieEl"></div>
 
+<body>
+    <div class="calorieCal-wrap">
+        Age: <input id="ageInputEl" type="text" value=""><br>
+        Gender: <input id="genderInputMaleEl" type="radio" name="gender" value="Male" checked>Male
+        <input id="genderInputFemaleEl" type="radio" name="gender" value="Male">Female
+        <br>
+        <input id="metricBtnEl" type="button" value="Metric Units">
+        <input id="usBtnEl" type="button" value="US Units">
+        <br>
+        Height: <input id="heightInputEl" type="text" placeholder="Centimeters" value="">
+        <input id="heightInputUsEl" type="text" placeholder="Feet" value="">
+        <input id="height2InputUsEl" type="text" placeholder="Inches" value="">
+        <br>
+        Weight: <input id="weightInputEl" type="text" placeholder="Kilograms" value="">
+        <input id="weightInputUsEl" type="text" placeholder="Pounds" value="">
+        <br>
+        Activity:
+        <select id="actSelectorEl">
+            <option value="actBasicInputEl">Basic Metabolic Rate (BMR)</option>
+            <option value="actLowInputEl">Low Exercise (1-3 days per week)</option>
+            <option value="actMedInputEl">Medium Exercise (4-5 days per week)</option>
+            <option value="actHighInputEl">High Exercise (6-7 days per week)</option>
+        </select><br>
+        <input id="calorieCalBtnEl" type="button" value="Calculate"><br>
+        <!-- Daily Calories Needed: <input id="calorieResultEl" type="text" disabled> -->
+        <div id="displayCalorieEl"></div>
+    </div>
 
 </body>
 <script src="./js/calorieCal.js">
-
 </script>
+
 </html>

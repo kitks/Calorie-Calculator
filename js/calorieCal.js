@@ -2,18 +2,25 @@ let ageInputEl = document.getElementById("ageInputEl")
 
 let genderInputMaleEl = document.getElementById("genderInputMaleEl")
 let genderInputFemaleEl = document.getElementById("genderInputFemaleEl")
+
+let metricBtnEl = document.getElementById("metricBtnEl")
+let usBtnEl = document.getElementById("usBtnEl")
+
 let heightInputEl = document.getElementById("heightInputEl")
 let weightInputEl = document.getElementById("weightInputEl")
+let heightInputUsEl = document.getElementById("heightInputUsEl")
+let height2InputUsEl = document.getElementById("height2InputUsEl")
+
+let weightInputUsEl = document.getElementById("weightInputUsEl")
 
 let actSelectorEl = document.getElementById("actSelectorEl")
 let calorieCalBtnEl = document.getElementById("calorieCalBtnEl")
 let calorieResultEl = document.getElementById("calorieResultEl")
 
-calorieCalBtnEl.addEventListener("click", calorieBMRCal)
 
-function testBtn() {
-    console.log(`test Btn`)
-}
+// function testBtn() {
+//     console.log(`test Btn`)
+// }
 
 function calorieBMRCal() {
     // Mifflin-St Jeor Equation
@@ -22,8 +29,8 @@ function calorieBMRCal() {
 
     let resultBMRTemp = (weightInputEl.value * 10) + (heightInputEl.value * 6.25) - (ageInputEl.value * 5)
 
-    if(ageInputEl.value === 0 && weightInputEl.value === 0 && heightInputEl.value===0){
-        return alert("Please fill in every information")
+    if (ageInputEl.value === "" && weightInputEl.value === "" && heightInputEl.value === "") {
+        return alert("Please fill the information")
     }
 
     if (genderInputMaleEl.checked === true) {
@@ -94,12 +101,12 @@ function calorieActHigh(resultBMR) {
 // let displayCalorie = document.getElementById("displayCalorieEl")
 let displayCalorie = document.getElementById("displayCalorieEl")
 
-function displayBMR(resultBMR){
+function displayBMR(resultBMR) {
     return displayCalorie.innerHTML = (`<br>Basic Metabolic Rate (BMR): <b>${resultBMR}</b> Calories/day`)
 }
 
-function displayWeightTarget(resultBMR){
-    
+function displayWeightTarget(resultBMR) {
+
     let displaymain = Math.floor(resultBMR)
     let displayLowLoss = Math.floor(resultBMR * 0.87)
     let displayMedLoss = Math.floor(resultBMR * 0.73)
@@ -109,38 +116,58 @@ function displayWeightTarget(resultBMR){
     <br>
     Daily Calories Needed:
     <br>
-    Target for maintain weight: <b>${displaymain}</b> Calories/day
+    Maintain weight: <b>${displaymain}</b> Calories/day
     <br>
-    Target for mild loss weight: <b>${displayLowLoss}</b> Calories/day
+    Mild weight loss:
     <br>
-    Target for mild loss weight: <b>${displayMedLoss}</b> Calories/day
+    0.25 kg/week <b>${displayLowLoss}</b> Calories/day
     <br>
-    Target for mild loss weight: <b>${displayHighLoss}</b> Calories/day
+    Weight loss:
+    <br>
+    0.5 kg/week <b>${displayMedLoss}</b> Calories/day
+    <br>
+    Extreme weight loss:
+    <br>
+    1 kg/week <b>${displayHighLoss}</b> Calories/day
     `)
-    
+
 }
 
+function unitUsSwitch() {
+    console.log(`test unit switch button`)
+    heightInputUsEl.style.display = "inline-block"
+    height2InputUsEl.style.display = "inline-block"
+    weightInputUsEl.style.display = "inline-block"
+    heightInputEl.style.display = "none"
+    weightInputEl.style.display = "none"
+}
+
+function unitMetricSwitch() {
+    console.log(`test unit switch button`)
+    heightInputUsEl.style.display = "none"
+    height2InputUsEl.style.display = "none"
+    weightInputUsEl.style.display = "none"
+    heightInputEl.style.display = "inline-block"
+    weightInputEl.style.display = "inline-block"
+}
+
+function calorieFormula() {
+    if (heightInputEl.style.display === "none") {
+        return console.log(`us true`)
+
+    } else if (heightInputUsEl.style.display === "none") {
+        return console.log(`metric true`)
+    }
+}
+
+
+calorieCalBtnEl.addEventListener("click", calorieFormula)
+usBtnEl.addEventListener("click", unitUsSwitch)
+metricBtnEl.addEventListener("click", unitMetricSwitch)
 // document.body.innerHTML = (`
 // Target for loss weight ${resultBMR}
 // `)
 
-// Maintain weight
-// 1,779 100%    137.5 %
-// Calories/day
 
-// Mild weight loss
-// 0.25 kg/week
-// 1,529 86%     118.2 %
-// Calories/day
-
-// Weight loss
-// 0.5 kg/week   98.8 %
-// 1,279 72%
-// Calories/day
-
-// Extreme weight loss  
-// 1 kg/week      60 %
-// 779 44%
-// Calories/day
 
 
