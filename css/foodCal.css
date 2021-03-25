@@ -1,0 +1,27 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.foodCalWrap #displaySearchBox {
+  width: 1000px;
+  height: 300px;
+  border: 1px solid black;
+}
+
+.foodCalWrap #displaySearchBox li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.foodCalWrap #displaySearchBox img {
+  width: 100px;
+  height: 100px;
+}
+/*# sourceMappingURL=foodCal.css.map */

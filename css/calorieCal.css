@@ -9,41 +9,88 @@ body {
 }
 
 .calorieCal-wrap {
-  background-color: #1d8a92;
-  width: 400px;
-  height: 500px;
+  background-color: #4b94b1;
+  width: 365px;
+  height: 390px;
   margin: 20px auto 0;
   padding: 20px;
-  font-family: "Comfortaa", cursive;
+  font-family: 'Lato', sans-serif;
   color: black;
   border-radius: 30px;
 }
 
-.calorieCal-wrap input {
+.calorieCal-wrap h1 {
   margin: 5px 0;
 }
 
-.calorieCal-wrap #metricBtnEl:focus {
-  background-color: grey;
+.calorieCal-wrap .inputRow {
+  margin: 5px 0;
 }
 
-.calorieCal-wrap #usBtnEl:focus {
-  background-color: grey;
+.calorieCal-wrap .inputRow p {
+  font-weight: 700;
+  margin: 0;
+}
+
+.calorieCal-wrap input {
+  -webkit-box-shadow: black 4px, 4px, 4px, 4px;
+          box-shadow: black 4px, 4px, 4px, 4px;
+}
+
+.calorieCal-wrap #ageInputEl {
+  width: 80px;
+}
+
+.calorieCal-wrap #metricBtnEl {
+  outline: 0;
+}
+
+.calorieCal-wrap #usBtnEl {
+  outline: 0;
 }
 
 .calorieCal-wrap #heightInputUsEl {
   display: none;
+  width: 50px;
 }
 
 .calorieCal-wrap #height2InputUsEl {
   display: none;
+  width: 50px;
 }
 
 .calorieCal-wrap #weightInputUsEl {
   display: none;
 }
 
-.calorieCal-wrap #displayCalorieEl {
-  color: white;
+.calorieCal-wrap #calorieCalBtnEl {
+  margin: 5px 0;
+}
+
+.calorieCal-wrap #resultBox {
+  margin: 15px auto 0;
+  width: 320px;
+  height: 80px;
+  background-color: ivory;
+  color: black;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.calorieCal-wrap #displayCalorieEl h3 {
+  margin: 0 0 10px;
+}
+
+.calorieCal-wrap #displayCalorieEl h4 {
+  margin: 8px 0 0;
+}
+
+.calorieCal-wrap #displayCalorieEl p {
+  margin: 3px 0;
+  font-size: 15px;
+}
+
+.calorieCal-wrap #displayCalorieEl i {
+  color: grey;
 }
 /*# sourceMappingURL=calorieCal.css.map */

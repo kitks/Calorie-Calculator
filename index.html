@@ -4,37 +4,50 @@
 <head>
     <title>Calories</title>
     <link rel="stylesheet" href="./css/calorieCal.css">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="calorieCal-wrap">
         <h1>Calories Calculator</h1>
-        Age: <input id="ageInputEl" type="text" value="">
-        <br>
-        Gender: <input id="genderInputMaleEl" type="radio" name="gender" value="Male" checked>Male
-        <input id="genderInputFemaleEl" type="radio" name="gender" value="Male">Female
-        <br>
-        <input id="metricBtnEl" type="button" value="Metric Units">
-        <input id="usBtnEl" type="button" value="US Units">
-        <br>
-        Height: <input id="heightInputEl" type="text" placeholder="Centimeters" value="">
-        <input id="heightInputUsEl" type="text" placeholder="Feet" value="">
-        <input id="height2InputUsEl" type="text" placeholder="Inches" value="">
-        <br>
-        Weight: <input id="weightInputEl" type="text" placeholder="Kilograms" value="">
-        <input id="weightInputUsEl" type="text" placeholder="Pounds" value="">
-        <br>
-        Activity:
-        <select id="actSelectorEl">
-            <option value="actBasicInputEl">Basic Metabolic Rate (BMR)</option>
-            <option value="actLowInputEl">Low Exercise (1-3 days per week)</option>
-            <option value="actMedInputEl">Medium Exercise (4-5 days per week)</option>
-            <option value="actHighInputEl">High Exercise (6-7 days per week)</option>
-        </select><br>
-        <input id="calorieCalBtnEl" type="button" value="Calculate"><br>
-        <!-- Daily Calories Needed: <input id="calorieResultEl" type="text" disabled> -->
-        <div id="displayCalorieEl"></div>
+        <div class="inputRow">
+            <p>Age: <input id="ageInputEl" type="text" value="25" placeholder="Age 15 - 80"></p>
+        </div>
+        <div class="inputRow">
+            <p>Gender: <input id="genderInputMaleEl" type="radio" name="gender" value="Male" checked>Male
+                <input id="genderInputFemaleEl" type="radio" name="gender" value="Male">Female
+            </p>
+        </div>
+        <div class="inputRow">
+            <p><input id="metricBtnEl" type="button" value="Metric Units">
+                <input id="usBtnEl" type="button" value="US Units">
+            </p>
+        </div>
+        <div class="inputRow">
+            <p>Height: <input id="heightInputEl" type="text" placeholder="Centimeters" value="175">
+                <input id="heightInputUsEl" type="text" placeholder="Feet" value="">
+                <input id="height2InputUsEl" type="text" placeholder="Inches" value="">
+            </p>
+        </div>
+        <div class="inputRow">
+            <p>Weight: <input id="weightInputEl" type="text" placeholder="Kilograms" value="68">
+                <input id="weightInputUsEl" type="text" placeholder="Pounds" value="">
+            </p>
+        </div>
+        <div class="inputRow">
+            <p>Activity:
+                <select id="actSelectorEl">
+                    <option value="actBasicInputEl">Basic Metabolic Rate (BMR)</option>
+                    <option value="actLowInputEl">Low Exercise (1-3 days per week)</option>
+                    <option value="actMedInputEl">Medium Exercise (4-5 days per week)</option>
+                    <option value="actHighInputEl">High Exercise (6-7 days per week)</option>
+                </select>
+            </p>
+        </div>
+        <input id="calorieCalBtnEl" type="button" value="Calculate">
+        <div id="resultBox">
+            <div id="displayCalorieEl"></div>
+        </div>
     </div>
 
 </body>

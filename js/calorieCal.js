@@ -1,4 +1,6 @@
 //===================== Set up variables
+let calorieCalWrap = document.getElementsByClassName("calorieCal-wrap")[0]
+
 let ageInputEl = document.getElementById("ageInputEl")
 
 let genderInputMaleEl = document.getElementById("genderInputMaleEl")
@@ -18,14 +20,16 @@ let actSelectorEl = document.getElementById("actSelectorEl")
 let calorieCalBtnEl = document.getElementById("calorieCalBtnEl")
 let calorieResultEl = document.getElementById("calorieResultEl")
 
+let resultBox = document.getElementById("resultBox")
 let displayCalorie = document.getElementById("displayCalorieEl")
 
 //===================== Metric unit switcher
 function unitMetricSwitch() {
     console.log(`test unit switch button`)
-    metricBtnEl.focus()
-    // usBtnEl.style.backgroundColor = "transparent"
+    // metricBtnEl.focus()
 
+    metricBtnEl.style.backgroundColor = "grey"
+    usBtnEl.style.backgroundColor = "white"
     heightInputUsEl.style.display = "none"
     height2InputUsEl.style.display = "none"
     weightInputUsEl.style.display = "none"
@@ -40,9 +44,10 @@ function unitMetricSwitch() {
 //===================== US unit switcher
 function unitUsSwitch() {
     console.log(`test unit switch button`)
-    usBtnEl.focus()
-    // metricBtnEl.style.backgroundColor = "transparent"
+    // usBtnEl.focus()
 
+    usBtnEl.style.backgroundColor = "grey"
+    metricBtnEl.style.backgroundColor = "white"
     heightInputUsEl.style.display = "inline-block"
     height2InputUsEl.style.display = "inline-block"
     weightInputUsEl.style.display = "inline-block"
@@ -60,7 +65,9 @@ function calorieFormula() {
 
     let resultTemp
 
-
+    if (ageInputEl.value < 15 || ageInputEl.value > 80) {
+        return alert(`Please input age between 15 - 80`)
+    }
 
     if (heightInputUsEl.style.display === "none" && ageInputEl.value && weightInputEl.value && heightInputEl.value !== "") {
         console.log(`metric true`)
@@ -84,9 +91,9 @@ function calorieFormula() {
 
     }
 
-    
 
- 
+
+
 }
 
 //===================== Define the gender then calculate the Basic calories
@@ -94,8 +101,8 @@ function calorieFormula() {
 function calorieCal(resultTemp) {
 
 
-    if(isNaN(resultTemp)){
-        return alert (`Vaild Input. Please input number.`)
+    if (isNaN(resultTemp)) {
+        return alert(`Vaild Input. Please input number.`)
     }
 
     if (genderInputMaleEl.checked === true) {
@@ -163,11 +170,17 @@ function calorieActHigh(resultBMR) {
 
 //===================== Display the basic calorie result
 function displayBMR(resultBMR) {
-    return displayCalorie.innerHTML = (`<br>Basic Metabolic Rate (BMR): <b>${resultBMR}</b> Calories/day`)
+    resultBox.style.height = "80px"
+    calorieCalWrap.style.height = "390px"
+
+    return displayCalorie.innerHTML = (`<h3>Basic Metabolic Rate (BMR):</h3><p><b>${resultBMR}</b> <i>Calories/day</i><p>`)
 }
 
 //===================== Display the 4 weight target results 
 function displayWeightTarget(resultBMR) {
+
+    resultBox.style.height = "240px"
+    calorieCalWrap.style.height = "540px"
 
     let displaymain = Math.floor(resultBMR)
     let displayLowLoss = Math.floor(resultBMR * 0.87)
@@ -175,22 +188,21 @@ function displayWeightTarget(resultBMR) {
     let displayHighLoss = Math.floor(resultBMR * 0.46)
 
     return displayCalorie.innerHTML = (`
-    <br>
-    Daily Calories Needed:
-    <br>
-    Maintain weight: <b>${displaymain}</b> Calories/day
-    <br>
-    Mild weight loss:
-    <br>
-    0.25 kg/week <b>${displayLowLoss}</b> Calories/day
-    <br>
-    Weight loss:
-    <br>
-    0.5 kg/week <b>${displayMedLoss}</b> Calories/day
-    <br>
-    Extreme weight loss:
-    <br>
-    1 kg/week <b>${displayHighLoss}</b> Calories/day
+    
+    <h3>Daily Calories Needed</h3>
+    
+    <h4>Maintain weight</h4>
+    <p><b>${displaymain}</b> <i>Calories/day</i> </p>
+    
+    <h4>Mild weight loss</h4>
+    <p><b>0.25</b> <i>kg/week</i> <b>${displayLowLoss}</b> <i>Calories/day</i></p>
+    
+    <h4>Weight loss</h4>
+    <p><b>0.5</b> <i>ikg/week</i> <b>${displayMedLoss}</b> <i>Calories/day</i></p>
+    
+    <h4>Extreme weight loss</h4>
+    <p><b>1</b> <i>kg/week</i> <b>${displayHighLoss}</b> <i>Calories/day</i></p>
+
     `)
 
 }
