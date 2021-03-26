@@ -3,6 +3,13 @@ let searchBtnEl = document.getElementById("searchBtnEl")
 
 let displaySearchBox = document.getElementById("displaySearchBox")
 let displayAddFood = document.getElementById("displayAddFood")
+
+let addBrEl = document.getElementById("addBrEl")
+
+let calBtnEl = document.getElementById("calBtnEl")
+let calResultEl = document.getElementById("calResultEl")
+
+
 const api = {
     // url: `https://api.edamam.com/api/food-database/v2/parser?`,
 
@@ -46,13 +53,13 @@ function displaySearch(searchresult) {
 
     // ================= Display searching item title
     displaySearchBox.innerHTML = (`
-    <p><i>Searh result of</i> <b>${searchresult.text}<b>....</p>
+    <p><i>Result of</i> <b>${searchresult.text}<b>....</p>
     `)
 
     // ================= Loop and print the search result
     for (i = 0; i < searchresult.hints.length; i++) {
 
-        console.log(searchresult.hints[i])
+        // console.log(searchresult.hints[i])
         // ================= If no source image from api, replace by internal image
         if (!("image" in searchresult.hints[i].food)) {
 
@@ -62,10 +69,10 @@ function displaySearch(searchresult) {
         <input class="addBtn" type="button" value="Add">
         <div class="addBtnWrap">
         
-        <input id="addBr${[i]}" type="button" value="Add to breakfast" onclick="displayAdd(${[i]})">
-        <input id="addLu${[i]}" type="button" value="Add to lunch"> 
-        <input id="addDi${[i]}" type="button" value="Add to dinner">
-        <input id="addSn${[i]}" type="button" value="Add to snack">  
+        <input id="addBr${[i]}" type="button" value="Add to breakfast" onclick="addBr(${[i]})">
+        <input id="addLu${[i]}" type="button" value="Add to lunch "onclick="addLu(${[i]}) "> 
+        <input id="addDi${[i]}" type="button" value="Add to dinner "onclick="addDi(${[i]})">
+        <input id="addSn${[i]}" type="button" value="Add to snack "onclick="addSn(${[i]})">  
         </div>  
         </div>
         `)
@@ -77,10 +84,10 @@ function displaySearch(searchresult) {
     <input class="addBtn" type="button" value="Add">
     <div class="addBtnWrap">
     
-    <input id="addBr${[i]}" type="button" value="Add to breakfast" onclick="displayAdd(${[i]})">
-    <input id="addLu${[i]}" type="button" value="Add to lunch"> 
-    <input id="addDi${[i]}" type="button" value="Add to dinner">
-    <input id="addSn${[i]}" type="button" value="Add to snack">  
+    <input id="addBr${[i]}" type="button" value="Add to breakfast" onclick="addBr(${[i]})">
+    <input id="addLu${[i]}" type="button" value="Add to lunch "onclick="addLu(${[i]}) "> 
+    <input id="addDi${[i]}" type="button" value="Add to dinner "onclick="addDi(${[i]})">
+    <input id="addSn${[i]}" type="button" value="Add to snack "onclick="addSn(${[i]})">  
     </div>  
     </div>
     `)
@@ -89,13 +96,88 @@ function displaySearch(searchresult) {
     console.log(searchresult.text)
 }
 
-function displayAdd(foodNum){ 
-    
+function addBr(foodNum) {
+
     console.log(foodNum)
-   return displayAddFood.innerHTML += (`<img src="${searchresult.hints[foodNum].food.image}">`)
-   
+    addBrEl.innerHTML += (`
+        <div class="box">
+        <img src="${searchresult.hints[foodNum].food.image}">
+        <br>
+        ${searchresult.hints[foodNum].food.label}
+        <br>
+        Kcal ${searchresult.hints[foodNum].food.nutrients.ENERC_KCAL}
+      </div>
+    `)
+
+    return addBrCal = (`${searchresult.hints[foodNum].food.nutrients.ENERC_KCAL}`)
+
 }
 
+function addLu(foodNum) {
 
+    console.log(foodNum)
+    addLuEl.innerHTML += (`
+        <div class="box">
+        <img src="${searchresult.hints[foodNum].food.image}">
+        <br>
+        ${searchresult.hints[foodNum].food.label}
+        <br>
+        Kcal ${searchresult.hints[foodNum].food.nutrients.ENERC_KCAL}
+      </div>
+    `)
+
+    return addLuCal = (`${searchresult.hints[foodNum].food.nutrients.ENERC_KCAL}`)
+
+}
+
+function addDi(foodNum) {
+
+    console.log(foodNum)
+    addDiEl.innerHTML += (`
+        <div class="box">
+        <img src="${searchresult.hints[foodNum].food.image}">
+        <br>
+        ${searchresult.hints[foodNum].food.label}
+        <br>
+        Kcal ${searchresult.hints[foodNum].food.nutrients.ENERC_KCAL}
+      </div>
+    `)
+
+    return addDiCal = (`${searchresult.hints[foodNum].food.nutrients.ENERC_KCAL}`)
+
+}
+let Sncal=""
+let boxEl= document.getElementsByClassName("box")
+
+function addSn(foodNum) {
+    let addSnCal = 0
+    // console.log(foodNum)
+    addSnEl.innerHTML += (`
+        <div class="box" value="${searchresult.hints[foodNum].food.nutrients.ENERC_KCAL}">
+        <img src="${searchresult.hints[foodNum].food.image}">
+        <br>
+        ${searchresult.hints[foodNum].food.label}
+        <br>
+        Kcal ${searchresult.hints[foodNum].food.nutrients.ENERC_KCAL}
+      </div>
+    `)
+    addSnCal += parseInt(`${searchresult.hints[foodNum].food.nutrients.ENERC_KCAL}`)
+    
+    return console.log(addSnCal)
+    // addSnCal += (`${searchresult.hints[foodNum].food.nutrients.ENERC_KCAL}`)
+    
+
+}
+let result = 0
+function calCar(){
+//    var result,
+   
+   result += boxEl.value
+
+    // console.log(result)
+    return console.log(result);
+}
+
+calBtnEl.addEventListener("click", calCar)
 // addBtn.addEventListener("click", testBtn)
 searchBtnEl.addEventListener("click", searchFood)

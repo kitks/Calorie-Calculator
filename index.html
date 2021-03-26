@@ -4,14 +4,17 @@
 <head>
     <title>Calories</title>
     <link rel="stylesheet" href="./css/calorieCal.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/foodCal.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <div class="calorieCal-wrap">
         <h1>Calories Calculator</h1>
         <div class="inputRow">
-            <p>Age: <input id="ageInputEl" type="text" value="25" placeholder="Age 15 - 80"></p>
+            <p>Age: <input id="ageInputEl" type="text" value="" placeholder="Age 15 - 80"></p>
         </div>
         <div class="inputRow">
             <p>Gender: <input id="genderInputMaleEl" type="radio" name="gender" value="Male" checked>Male
@@ -24,13 +27,13 @@
             </p>
         </div>
         <div class="inputRow">
-            <p>Height: <input id="heightInputEl" type="text" placeholder="Centimeters" value="175">
+            <p>Height: <input id="heightInputEl" type="text" placeholder="Centimeters" value="">
                 <input id="heightInputUsEl" type="text" placeholder="Feet" value="">
                 <input id="height2InputUsEl" type="text" placeholder="Inches" value="">
             </p>
         </div>
         <div class="inputRow">
-            <p>Weight: <input id="weightInputEl" type="text" placeholder="Kilograms" value="68">
+            <p>Weight: <input id="weightInputEl" type="text" placeholder="Kilograms" value="">
                 <input id="weightInputUsEl" type="text" placeholder="Pounds" value="">
             </p>
         </div>
@@ -50,8 +53,34 @@
         </div>
     </div>
 
+    <div class="foodCalWrap">
+        <input id="searchBarEl" type="text" value="" placeholder="Search food....">
+        <input id="searchBtnEl" type="button" value="Search">
+        <div id="displaySearchBox">
+
+        </div>
+        <div id="displayAddFood">
+            <div class="addBox" id="addBrEl">
+                <h3>Breakfast</h3>
+            </div>
+            <div class="addBox" id="addLuEl">
+                <h3>Lunch</h3>
+            </div>
+            <div class="addBox" id="addDiEl">
+                <h3>Dinner</h3>
+            </div>
+            <div class="addBox" id="addSnEl">
+                <h3>Snack</h3>
+            </div>
+            <input id="calBtnEl" type="button" value="Calculate">
+            <div id="calResultEl"></div>
+        </div>
+
+
+    </div>
+
 </body>
-<script src="./js/calorieCal.js">
-</script>
+<script src="./js/calorieCal.js"></script>
+<script src='./js/foodCal.js'></script>
 
 </html>
