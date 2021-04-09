@@ -15,7 +15,7 @@ let displayAddFood = document.getElementById("displayAddFood")
 let addBox = document.getElementsByClassName('addBox')[0]
 let boxes = addBox.getElementsByClassName('box')
 
-let calBtnEl = document.getElementById("calBtnEl")
+// let calBtnEl = document.getElementById("calBtnEl")
 let calResultEl = document.getElementById("calResultEl")
 
 
@@ -216,7 +216,7 @@ function updateCalorie() {
 
         totalCal += calorie * qty
     }
-    document.getElementById('totalCalEl').innerText = 'Total Kcal: ' + totalCal
+    document.getElementById('totalCalEl').innerHTML = (`Total Kcal: <br> ${totalCal} `)
 }
 
 
